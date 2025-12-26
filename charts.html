@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BFS Running Time Charts - Surabaya Route Simulator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-blue-50 text-gray-800 p-8">
+  <div class="container mx-auto">
+    <h1 class="text-4xl font-bold text-center text-blue-600 mb-8">Grafik Perbandingan Running Time BFS</h1>
+    <p class="text-center mb-8">Data hipotetis berdasarkan benchmark JavaScript. Iteratif (biru) vs Rekursif (merah). Hover untuk detail.</p>
+
+    <!-- Bar Chart -->
+    <div class="card mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Bar Chart: Running Time per Ukuran Graf</h2>
+      <canvas id="barChart" width="400" height="200"></canvas>
+    </div>
+
+    <!-- Line Chart -->
+    <div class="card">
+      <h2 class="text-2xl font-semibold mb-4">Line Chart: Trend Running Time vs Ukuran Graf</h2>
+      <canvas id="lineChart" width="400" height="200"></canvas>
+    </div>
+
+    <a href="homepage.html" class="btn-primary block text-center mt-8">Kembali ke Homepage</a>
+  </div>
+
+  <script>
+    // Data dari tabel analisis (hipotetis; ganti dengan data real jika ada)
+    const labels = ['Kecil (V=5)', 'Sedang (V=20)', 'Besar (V=50)', 'Sangat Besar (V=100)', 'Ekstrem (V=500)'];
+    const iterativeData = [0.08, 0.45, 1.20, 2.50, 15.00];
+    const recursiveData = [0.15, 0.92, 2.85, 6.10, 45.00];
+
+    // Bar Chart
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'BFS Iteratif (ms)',
+            data: iterativeData,
+            backgroundColor: 'rgba(54, 162, 235, 0.6)', // Biru
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'BFS Rekursif (ms)',
+            data: recursiveData,
+            backgroundColor: 'rgba(255, 99, 132, 0.6)', // Merah
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Running Time (ms)' }
+          },
+          x: {
+            title: { display: true, text: 'Ukuran Graf' }
+          }
+        },
+        plugins: {
+          legend: { position: 'top' },
+          tooltip: { mode: 'index', intersect: false }
+        }
+      }
+    });
+
+    // Line Chart
+    const lineCtx = document.getElementById('lineChart').getContext('2d');
+    new Chart(lineCtx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'BFS Iteratif (ms)',
+            data: iterativeData,
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.1)',
+            tension: 0.1
+          },
+          {
+            label: 'BFS Rekursif (ms)',
+            data: recursiveData,
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.1)',
+            tension: 0.1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Running Time (ms)' }
+          },
+          x: {
+            title: { display: true, text: 'Ukuran Graf' }
+          }
+        },
+        plugins: {
+          legend: { position: 'top' },
+          tooltip: { mode: 'index', intersect: false }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

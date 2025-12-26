@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surabaya Route Simulator - Maps</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="map" class="map-container"></div>
+  <div class="bottom-sheet">
+    <h2 class="text-lg font-semibold mb-4">Peta Surabaya</h2>
+    <p>Zoom dan pan untuk eksplorasi. Marker menunjukkan lokasi utama.</p>
+    <a href="routeplan.html" class="btn-primary block text-center mt-4">Ke Route Planner</a>
+  </div>
+  <script type="module" src="js/map.js"></script>
+  <script>
+    // Inisialisasi peta
+    import { initMap } from './js/map.js';
+    initMap();
+  </script>
+</body>
+</html>

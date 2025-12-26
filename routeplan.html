@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surabaya Route Simulator - Route Planner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="map" class="map-container"></div>
+  <div class="bottom-sheet">
+    <h2 class="text-lg font-semibold mb-4">Route Planner</h2>
+    <select id="start-location" class="mb-4">
+      <option value="">Pilih Start Location</option>
+    </select>
+    <select id="destination" class="mb-4">
+      <option value="">Pilih Destination</option>
+    </select>
+    <select id="algorithm" class="mb-4">
+      <option value="iterative">BFS Iteratif</option>
+      <option value="recursive">BFS Rekursif</option>
+    </select>
+    <button id="generate-route" class="btn-primary w-full">Generate Route</button>
+    <div class="card mt-4">
+      <p id="route-output">Rute akan muncul di sini setelah generate.</p>
+    </div>
+  </div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
